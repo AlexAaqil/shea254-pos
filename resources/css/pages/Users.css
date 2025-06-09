@@ -1,13 +1,16 @@
-.Users {
+.Users,
+.Products {
     .container {
         .header {
             @apply flex flex-wrap items-center justify-between gap-4 py-4;
         }
 
-        .users {
+        .users,
+        .products {
             @apply grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
 
-            .user {
+            .user,
+            .product {
                 @apply bg-white border border-gray-200 p-4 rounded-xl shadow-sm flex gap-4;
 
                 .image {
@@ -24,7 +27,7 @@
                             @apply font-semibold text-sm truncate;
                         }
 
-                        .email {
+                        .price {
                             @apply text-sm text-gray-500 truncate;
                         }
 

@@ -13,7 +13,7 @@ use App\Enums\USER_ROLES;
 class Form extends Component
 {
     public $user_id;
-    public $first_name, $last_name, $email, $role, $password, $password_confirmation;
+    public $first_name, $last_name, $email, $user_level, $phone_number, $password, $password_confirmation;
 
     public function mount($uuid = null)
     {
@@ -23,7 +23,8 @@ class Form extends Component
             $this->first_name = $user->first_name;
             $this->last_name = $user->last_name;
             $this->email = $user->email;
-            $this->role = $user->role;
+            $this->phone_number = $user->phone_number;
+            $this->user_level = $user->user_level;
         }
     }
 
@@ -33,8 +34,13 @@ class Form extends Component
             'first_name' => ['required', 'string', 'max:70'],
             'last_name' => ['required', 'string', 'max:120'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users,email,' . $this->user_id],
+            'phone_number' => [
+                'required',
+                'string',
+                'regex:/^(2547|2541)[0-9]{8}$/',
+            ],
             'password' => ['nullable', 'string', 'confirmed', Rules\Password::defaults()],
-            'role' => ['required', new Enum(USER_ROLES::class)],
+            'user_level' => ['required', new Enum(USER_ROLES::class)],
         ];
 
         if (!$this->user_id) {
@@ -72,7 +78,10 @@ class Form extends Component
             $user->update($validated_data);
             $message = 'user has been updated';
         } else {
-            $validated_data['uuid'] = Str::ulid();
+            // $validated_data['uuid'] = Str::ulid();
+            if (empty($validated_data['phone_number'])) {
+                $validated_data['phone_number'] = '254700000000'; // Fallback default for required field
+            }
             User::create($validated_data);
             $message = 'user has been created';
         }

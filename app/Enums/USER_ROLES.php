@@ -8,6 +8,7 @@ enum USER_ROLES: int
     case ADMIN = 1;
     case USER = 2;
     case OWNER = 3;
+    case CASHIER = 4;
 
     public function label():string
     {
@@ -16,6 +17,7 @@ enum USER_ROLES: int
             self::ADMIN => 'Admin',
             self::USER => 'User',
             self::OWNER => 'Owner',
+            self::CASHIER => 'Cashier',
         };
     }
 

@@ -23,8 +23,14 @@
         </div>
 
         <div class="inputs">
-            <label for="role" class="required">Role</label>
-            <select wire:model="role" id="role">
+            <label for="phone_number" class="required">Phone Number</label>
+            <input type="text" wire:model="phone_number" id="phone_number" autocomplete="phone_number">
+            <x-form-input-error field="phone_number" />
+        </div>
+
+        <div class="inputs">
+            <label for="user_level" class="required">Role</label>
+            <select wire:model="user_level" id="user_level">
                 <option value="">Select a role</option>
                 @foreach(\App\Enums\USER_ROLES::labels() as $value => $label)
                     <option value="{{ $value }}" {{ $value == \App\Enums\USER_ROLES::USER->value ? 'selected' : '' }}>
@@ -32,7 +38,7 @@
                     </option>
                 @endforeach
             </select>
-            <x-form-input-error field="role" />
+            <x-form-input-error field="user_level" />
         </div>
 
         <div class="inputs">
@@ -51,7 +57,10 @@
         </div>
 
         <div class="buttons_group">
-            <button type="submit" class="btn btn_primary">Save</button>
+            <button type="submit" wire:loading.attr="disabled" wire:target="saveUser">
+                <span wire:loading.remove wire:target="saveUser">Save</span>
+                <span wire:loading wire:target="saveUser">Saving User...</span>
+            </button>
             <a href="{{ route('users.index') }}" wire:navigate class="btn btn_danger">Cancel</a>
         </div>
     </form>
