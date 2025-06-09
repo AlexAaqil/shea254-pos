@@ -1,0 +1,59 @@
+.Users {
+    .container {
+        .header {
+            @apply flex flex-wrap items-center justify-between gap-4 py-4;
+        }
+
+        .users {
+            @apply grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+
+            .user {
+                @apply bg-white border border-gray-200 p-4 rounded-xl shadow-sm flex gap-4;
+
+                .image {
+                    @apply h-[60px] w-[60px] flex-shrink-0 flex items-center justify-center overflow-hidden rounded-lg border border-gray-300;
+                }
+
+                .content {
+                    @apply flex-1 min-w-0 flex flex-col justify-between;
+
+                    .info {
+                        @apply space-y-1 min-w-0;
+
+                        .names {
+                            @apply font-semibold text-sm truncate;
+                        }
+
+                        .email {
+                            @apply text-sm text-gray-500 truncate;
+                        }
+
+                        .phone_number {
+                            @apply text-sm text-gray-500 truncate;
+                        }
+                    }
+
+                    .actions {
+                        @apply flex justify-between items-center mt-3 space-x-2;
+
+                        .others span {
+                            @apply inline-block px-2 py-0.5 rounded-md text-xs font-medium;
+                        }
+
+                        .crud {
+                            @apply flex items-center gap-2;
+
+                            a, button {
+                                @apply hover:scale-105 transition-transform;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .pagination_links {
+            @apply mt-6;
+        }
+    }
+}

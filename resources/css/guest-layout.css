@@ -1,0 +1,8 @@
+@import './utilities.css';
+
+@import './components/forms.blade.php';
+@import './components/buttons.blade.php';
+
+@import './partials/navbar.css';
+
+@import './pages/Authentication.css';

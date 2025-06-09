@@ -1,0 +1,15 @@
+@import './utilities.css';
+
+.app_layout {
+    .container {
+        @apply min-w-full px-4 py-2 mx-auto;
+    }
+}
+
+@import './components/forms.blade.php';
+@import './components/buttons.blade.php';
+
+@import './partials/app-navbar.css';
+
+@import './pages/Dashboard.css';
+@import './pages/Users.css';
